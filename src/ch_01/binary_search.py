@@ -22,8 +22,8 @@ class BinarySearchDebug:
             algorithm.
         time_in_nanoseconds (int): Time in nanoseconds required to complete
             the algorithm.
-        start (int): Left boundary value.
-        end (int): Right boundary value.
+        left_border (int): Value of left border.
+        right_border (int): Value of right border.
         cursor (int): Cursor value.
         index (int | None): Final result of the algorithm's operation.
 
@@ -32,8 +32,8 @@ class BinarySearchDebug:
     iterations: int = 0
     time_in_nanoseconds: int = 0
 
-    start: int = 0
-    end: int = 0
+    left_border: int = 0
+    right_border: int = 0
     cursor: int = 0
 
     index: int | None = None
@@ -74,18 +74,18 @@ def binary_search(
             sequence
 
     """
-    start: int = 0
-    end: int = len(sequence) - 1
+    left_border: int = 0
+    right_border: int = len(sequence) - 1
 
-    while start <= end:
-        cursor = (start + end) // 2
+    while left_border <= right_border:
+        cursor = (left_border + right_border) // 2
         guess: Comparable = sequence[cursor]
 
         if guess > element:
-            end = cursor - 1
+            right_border = cursor - 1
 
         elif guess < element:
-            start = cursor + 1
+            left_border = cursor + 1
 
         else:
             return cursor
@@ -114,19 +114,19 @@ def binary_search_debug(
     """
     debug: BinarySearchDebug = BinarySearchDebug()
     debug.start_timer()
-    debug.end = len(sequence) - 1
+    debug.right_border = len(sequence) - 1
 
-    while debug.start <= debug.end:
+    while debug.left_border <= debug.right_border:
         debug.iterations += 1
-        debug.cursor = (debug.start + debug.end) // 2
+        debug.cursor = (debug.left_border + debug.right_border) // 2
         guess: Comparable = sequence[debug.cursor]
         log(str(debug.as_dict()), verbose=verbose)
 
         if guess > element:
-            debug.end = debug.cursor - 1
+            debug.right_border = debug.cursor - 1
 
         elif guess < element:
-            debug.start = debug.cursor + 1
+            debug.left_border = debug.cursor + 1
 
         else:
             debug.index = debug.cursor
