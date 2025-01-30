@@ -22,8 +22,8 @@ class BinarySearchDebug:
             algorithm.
         time_in_nanoseconds (int): Time in nanoseconds required to complete
             the algorithm.
-        left_border (int): Value of left border.
-        right_border (int): Value of right border.
+        lower_bound (int): Value of lower bound.
+        upper_bound (int): Value of upper bound.
         cursor (int): Cursor value.
         index (int | None): Final result of the algorithm's operation.
 
@@ -32,8 +32,8 @@ class BinarySearchDebug:
     iterations: int = 0
     time_in_nanoseconds: int = 0
 
-    left_border: int = 0
-    right_border: int = 0
+    lower_bound: int = 0
+    upper_bound: int = 0
     cursor: int = 0
 
     index: int | None = None
@@ -74,18 +74,18 @@ def binary_search(
             sequence
 
     """
-    left_border: int = 0
-    right_border: int = len(sequence) - 1
+    lower_bound: int = 0
+    upper_bound: int = len(sequence) - 1
 
-    while left_border <= right_border:
-        cursor = (left_border + right_border) // 2
+    while lower_bound <= upper_bound:
+        cursor = (lower_bound + upper_bound) // 2
         guess: Comparable = sequence[cursor]
 
         if guess > element:
-            right_border = cursor - 1
+            upper_bound = cursor - 1
 
         elif guess < element:
-            left_border = cursor + 1
+            lower_bound = cursor + 1
 
         else:
             return cursor
@@ -108,24 +108,24 @@ def lower_bound_binary_search(
             sequence
 
     """
-    left_border: int = 0
-    right_border: int = len(sequence) - 1
+    lower_bound: int = 0
+    upper_bound: int = len(sequence) - 1
 
-    while left_border < right_border:
-        cursor = (left_border + right_border) // 2
+    while lower_bound < upper_bound:
+        cursor = (lower_bound + upper_bound) // 2
         guess: Comparable = sequence[cursor]
 
         if guess < element:
-            left_border = cursor + 1
+            lower_bound = cursor + 1
 
         else:
-            right_border = cursor
+            upper_bound = cursor
 
     if (
-        left_border < len(sequence)
-        and sequence[left_border] == element
+        lower_bound < len(sequence)
+        and sequence[lower_bound] == element
     ):
-        return left_border
+        return lower_bound
 
     return None
 
@@ -151,19 +151,19 @@ def binary_search_debug(
     """
     debug: BinarySearchDebug = BinarySearchDebug()
     debug.start_timer()
-    debug.right_border = len(sequence) - 1
+    debug.upper_bound = len(sequence) - 1
 
-    while debug.left_border <= debug.right_border:
+    while debug.lower_bound <= debug.upper_bound:
         debug.iterations += 1
-        debug.cursor = (debug.left_border + debug.right_border) // 2
+        debug.cursor = (debug.lower_bound + debug.upper_bound) // 2
         guess: Comparable = sequence[debug.cursor]
         log(str(debug.as_dict()), verbose=verbose)
 
         if guess > element:
-            debug.right_border = debug.cursor - 1
+            debug.upper_bound = debug.cursor - 1
 
         elif guess < element:
-            debug.left_border = debug.cursor + 1
+            debug.lower_bound = debug.cursor + 1
 
         else:
             debug.index = debug.cursor
@@ -198,25 +198,25 @@ def lower_bound_binary_search_debug(
     """
     debug: BinarySearchDebug = BinarySearchDebug()
     debug.start_timer()
-    debug.right_border = len(sequence) - 1
+    debug.upper_bound = len(sequence) - 1
 
-    while debug.left_border < debug.right_border:
+    while debug.lower_bound < debug.upper_bound:
         debug.iterations += 1
-        debug.cursor = (debug.left_border + debug.right_border) // 2
+        debug.cursor = (debug.lower_bound + debug.upper_bound) // 2
         guess: Comparable = sequence[debug.cursor]
         log(str(debug.as_dict()), verbose=verbose)
 
         if guess < element:
-            debug.left_border = debug.cursor + 1
+            debug.lower_bound = debug.cursor + 1
 
         else:
-            debug.right_border = debug.cursor
+            debug.upper_bound = debug.cursor
 
     if (
-        debug.left_border < len(sequence)
-        and sequence[debug.left_border] == element
+        debug.lower_bound < len(sequence)
+        and sequence[debug.lower_bound] == element
     ):
-        debug.index = debug.left_border
+        debug.index = debug.lower_bound
         debug.stop_timer()
         log(str(debug.as_dict()), verbose=verbose)
         return debug
