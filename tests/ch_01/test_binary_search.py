@@ -1,6 +1,6 @@
 """Tests for Chapter 1. Introduction to algorithms. Binary search."""
 
-from src.ch_01.binary_search import binary_search
+from src.ch_01.binary_search import binary_search, binary_search_debug
 
 
 def test_binary_search_on_integers() -> None:
@@ -10,6 +10,9 @@ def test_binary_search_on_integers() -> None:
     assert binary_search(sequence, 3) == 1
     assert binary_search(sequence, -1) is None
 
+    assert binary_search_debug(sequence, 3).index == 1
+    assert binary_search_debug(sequence, -1).index is None
+
 
 def test_binary_search_on_floats() -> None:
     """Test binary search on floats."""
@@ -18,6 +21,9 @@ def test_binary_search_on_floats() -> None:
     assert binary_search(sequence, 2.55) == 2
     assert binary_search(sequence, -5) is None
 
+    assert binary_search_debug(sequence, 2.55).index == 2
+    assert binary_search_debug(sequence, -5).index is None
+
 
 def test_binary_search_on_strings() -> None:
     """Test binary search on strings."""
@@ -25,3 +31,6 @@ def test_binary_search_on_strings() -> None:
 
     assert binary_search(sequence, "a") == 0
     assert binary_search(sequence, "d") == 3
+
+    assert binary_search_debug(sequence, "a").index == 0
+    assert binary_search_debug(sequence, "d").index == 3
