@@ -72,6 +72,8 @@ def test_exercise_1_1() -> None:
     assert sequence[0] == 1
     assert sequence[-1] == amount
 
+    assert expected_iterations == 7
+
     # First element will need log2(n) steps.
     assert binary_search_debug(
         sequence, sequence[0],
@@ -108,6 +110,8 @@ def test_exercise_1_2() -> None:
 
     assert sequence[0] == 1
     assert sequence[-1] == amount
+
+    assert expected_iterations == 8
 
     assert binary_search_debug(
         sequence, sequence[0],
