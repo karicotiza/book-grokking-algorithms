@@ -1,4 +1,4 @@
-"""Chapter 2. Selection sort."""
+"""Chapter 2. Selection sort. Selection sort algorithm."""
 from __future__ import annotations
 
 from copy import copy
