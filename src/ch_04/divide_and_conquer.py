@@ -4,6 +4,7 @@ from collections.abc import Sequence
 
 from src.utils.comparable import Comparable
 
+
 def recursive_sum(sequence: Sequence[float]) -> float:
     """Get sum of sequence using recursion.
 

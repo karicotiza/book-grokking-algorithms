@@ -1,4 +1,4 @@
-"""Tests for Chapter 4. Recursion. Divide and conquer."""
+"""Tests for Chapter 4. Quicksort. Divide and conquer."""
 
 from src.ch_04.divide_and_conquer import (
     recursive_len,
