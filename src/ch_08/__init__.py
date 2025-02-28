@@ -1,1 +1,1 @@
-"""Chapter 7. Balanced trees."""
+"""Chapter 8. Balanced trees."""

@@ -1,4 +1,4 @@
-"""Chapter 7. Balanced trees. B-tree."""
+"""Chapter 8. Balanced trees. B-tree."""
 from __future__ import annotations
 
 from dataclasses import dataclass
