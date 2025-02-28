@@ -1,4 +1,4 @@
-"""Tests for Chapter 6. Trees. Depth-first search."""
+"""Tests for Chapter 7. Trees. Depth-first search."""
 
 from src.ch_07.depth_first_search import Node, depth_first_search
 
